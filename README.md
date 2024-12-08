@@ -1,4 +1,4 @@
-# **LLM Security Benchmarks**
+# **LLM Security Guidance Benchmarks**
 
 **WORK IN PROGRESS**
 
