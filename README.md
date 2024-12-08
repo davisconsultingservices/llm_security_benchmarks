@@ -1,19 +1,22 @@
 # **LLM Security Benchmarks**
 
+**WORK IN PROGRESS**
+
 This repository is dedicated to benchmarking lightweight, open-source Large Language Models (LLMs) for their effectiveness in providing security guidance. Our work builds upon the [SECURE Benchmark](https://arxiv.org/pdf/2405.20441) to evaluate selected models across predefined cybersecurity tasks using external configuration files for flexibility and scalability.
 
 ---
 
 ## **Scope**
 
-We aim to:
+**Evaluate the following LLMs against the SECURE benchmark dataset.**
 
-1. **Replicate and extend the SECURE Benchmark** by assessing the performance of LLMs in realistic cybersecurity scenarios.
-2. **Evaluate four selected models**:
-   - **FastChat-T5**
-   - **LLaMA 3**
-   - **DLite**
-   - **Gemma**
+- [**FastChat-T5**](https://huggingface.co/lmsys/fastchat-t5): Lightweight T5 variant for seq2seq tasks.
+- [**DLite**](https://huggingface.co/aisquared/dlite-v2-1_5b): Lightweight GPT-based model for causal tasks.
+- [**Gemma**](https://huggingface.co/gemma-ai): Lightweight model for cybersecurity reasoning.
+- [**ZySec-AI/SecurityLLM**](https://huggingface.co/ZySec-AI/SecurityLLM): Specialized LLM for security-specific tasks.
+- [**LLaMA 2**](https://huggingface.co/meta-llama/Llama-2-7b-hf): Lightweight model for reasoning and causal tasks.
+- [**LLaMA 3.2**](https://huggingface.co/meta-llama/Llama-3.2-3B): Advanced model for causal and seq2seq tasks.
+
 
 ---
 
@@ -40,10 +43,9 @@ Our methodology involves:
      - **Knowledge Understanding**
      - **Reasoning and Problem-Solving**
 2. **Model Evaluation**:
-   - Running four models (FastChat-T5, LLaMA 3, DLite, Gemma) on each dataset.
-   - Using external configuration files to define model settings (`model_config.yaml`) and task datasets (`task_config.yaml`).
+   - Running all models on each dataset using external configuration files to define model settings (`model_config.yaml`) and task datasets (`task_config.yaml`).
 3. **Performance Analysis**:
-   - Evaluating performance metrics such as accuracy, precision, recall, and F1-score for each model and task.
+   - Evaluating performance metrics such as accuracy, precision, recall, and F1-score for each model and task. (TODO)
 
 ---
 
@@ -101,8 +103,8 @@ pip install -r requirements.txt
   information_extraction:
     maet:
       dataset_path: datasets/SECURE/Dataset/SECURE - MAET.tsv
-      input_column: Input
-      expected_column: Expected
+      input_column: Prompt       
+      expected_column: Correct Answer 
   ```
 
 ### **5. Run Evaluations**

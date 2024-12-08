@@ -26,8 +26,12 @@ def evaluate_model(task, dataset_path, model_name, config):
     results = []
 
     for _, row in data.iterrows():
-        input_text = row[tasks["information_extraction"][task]["input_column"]]
-        expected_output = row[tasks["information_extraction"][task]["expected_column"]]
+        # Construct input by combining the Prompt and Options
+        input_text = (
+            f"{row['Prompt']}\n"
+            f"Question) {row['Question']}"
+        )
+        expected_output = row["Correct Answer"]
 
         # Tokenize input and generate output
         inputs = tokenizer(input_text, return_tensors="pt", truncation=True)
@@ -37,9 +41,9 @@ def evaluate_model(task, dataset_path, model_name, config):
         # Record the result
         results.append({
             "Task": task,
-            "Input": input_text,
+            "Prompt": input_text,
             "Expected Output": expected_output,
-            "Model Output": output_text,
+            "Model Output": output_text.strip(),
             "Correct": output_text.strip() == expected_output.strip(),
         })
 

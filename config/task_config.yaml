@@ -1,29 +1,29 @@
 information_extraction:
   maet:
     dataset_path: datasets/SECURE/Dataset/SECURE - MAET.tsv
-    input_column: Input
-    expected_column: Expected
+    input_column: Prompt       
+    expected_column: Correct Answer 
   cwet:
     dataset_path: datasets/SECURE/Dataset/SECURE - CWET.tsv
-    input_column: Input
-    expected_column: Expected
+    input_column: Prompt       
+    expected_column: Correct Answer 
 
 knowledge_understanding:
   kcv:
     dataset_path: datasets/SECURE/Dataset/SECURE - KCV.tsv
-    input_column: Input
-    expected_column: Expected
+    input_column: Prompt       
+    expected_column: Correct Answer 
   vood:
     dataset_path: datasets/SECURE/Dataset/SECURE - VOOD.tsv
-    input_column: Input
-    expected_column: Expected
+    input_column: Prompt       
+    expected_column: Correct Answer 
 
 reasoning_and_problem_solving:
   rert:
     dataset_path: datasets/SECURE/Dataset/SECURE - RERT.tsv
-    input_column: Input
-    expected_column: Expected
+    input_column: Prompt       
+    expected_column: Correct Answer 
   cpst:
     dataset_path: datasets/SECURE/Dataset/SECURE - CPST.tsv
-    input_column: Input
-    expected_column: Expected
+    input_column: Prompt
+    expected_column: Correct Answer
