@@ -12,11 +12,10 @@ This repository is dedicated to benchmarking lightweight, open-source Large Lang
 
 - [**FastChat-T5**](https://huggingface.co/lmsys/fastchat-t5): Lightweight T5 variant for seq2seq tasks.
 - [**DLite**](https://huggingface.co/aisquared/dlite-v2-1_5b): Lightweight GPT-based model for causal tasks.
-- [**Gemma**](https://huggingface.co/gemma-ai): Lightweight model for cybersecurity reasoning.
 - [**ZySec-AI/SecurityLLM**](https://huggingface.co/ZySec-AI/SecurityLLM): Specialized LLM for security-specific tasks.
 - [**LLaMA 2**](https://huggingface.co/meta-llama/Llama-2-7b-hf): Lightweight model for reasoning and causal tasks.
 - [**LLaMA 3.2**](https://huggingface.co/meta-llama/Llama-3.2-3B): Advanced model for causal and seq2seq tasks.
-
+- [**Gemma**](https://huggingface.co/gemma-ai): Lightweight model for cybersecurity reasoning.
 
 ---
 
