@@ -91,14 +91,14 @@ pip install -r requirements.txt
 ```
 
 ### **4. Configure Models and Tasks**
-- Define models in `config/model_config.yaml`:
+- Define models in [`config/model_config.yaml`](config/model_config.yml):
   ```yaml
   fastchat_t5:
     tokenizer: t5-small
     model: t5-small
     type: seq2seq
   ```
-- Map datasets and columns in `config/task_config.yaml`:
+- Map datasets and columns in [`config/task_config.yaml`](config/task_config.yaml):
   ```yaml
   information_extraction:
     maet:
