@@ -1,0 +1,14 @@
+threat_identification:
+  dataset_path: datasets/SECURE/Dataset/threat_identification.tsv
+  input_column: Input
+  expected_column: Expected
+
+security_best_practices:
+  dataset_path: datasets/SECURE/Dataset/security_best_practices.tsv
+  input_column: Prompt
+  expected_column: Response
+
+compliance_guidance:
+  dataset_path: datasets/SECURE/Dataset/compliance_guidance.tsv
+  input_column: Query
+  expected_column: Answer

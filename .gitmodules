@@ -1,0 +1,3 @@
+[submodule "datasets/SECURE"]
+	path = datasets/SECURE
+	url = git@github.com:davisconsultingservices/SECURE.git

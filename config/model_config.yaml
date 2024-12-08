@@ -1,0 +1,19 @@
+fastchat_t5:
+  tokenizer: t5-small
+  model: t5-small
+  type: seq2seq
+
+llama3:
+  tokenizer: meta/llama-3b
+  model: meta/llama-3b
+  type: causal
+
+dlite:
+  tokenizer: dlite-small
+  model: dlite-small
+  type: seq2seq
+
+gemma:
+  tokenizer: gemma-base
+  model: gemma-base
+  type: causal
