@@ -1,14 +1,29 @@
-threat_identification:
-  dataset_path: datasets/SECURE/Dataset/threat_identification.tsv
-  input_column: Input
-  expected_column: Expected
+information_extraction:
+  maet:
+    dataset_path: datasets/SECURE/Dataset/SECURE - MAET.tsv
+    input_column: Input
+    expected_column: Expected
+  cwet:
+    dataset_path: datasets/SECURE/Dataset/SECURE - CWET.tsv
+    input_column: Input
+    expected_column: Expected
 
-security_best_practices:
-  dataset_path: datasets/SECURE/Dataset/security_best_practices.tsv
-  input_column: Prompt
-  expected_column: Response
+knowledge_understanding:
+  kcv:
+    dataset_path: datasets/SECURE/Dataset/SECURE - KCV.tsv
+    input_column: Input
+    expected_column: Expected
+  vood:
+    dataset_path: datasets/SECURE/Dataset/SECURE - VOOD.tsv
+    input_column: Input
+    expected_column: Expected
 
-compliance_guidance:
-  dataset_path: datasets/SECURE/Dataset/compliance_guidance.tsv
-  input_column: Query
-  expected_column: Answer
+reasoning_and_problem_solving:
+  rert:
+    dataset_path: datasets/SECURE/Dataset/SECURE - RERT.tsv
+    input_column: Input
+    expected_column: Expected
+  cpst:
+    dataset_path: datasets/SECURE/Dataset/SECURE - CPST.tsv
+    input_column: Input
+    expected_column: Expected
