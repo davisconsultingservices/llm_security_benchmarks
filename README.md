@@ -91,7 +91,7 @@ pip install -r requirements.txt
 ```
 
 ### **4. Configure Models and Tasks**
-- Define models in [model_config.yaml](./config/model_config.yml):
+- Define models in [model_config.yaml](./config/model_config.yaml):
   ```yaml
   fastchat_t5:
     tokenizer: t5-small
