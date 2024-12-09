@@ -61,6 +61,8 @@ def evaluate_model(task, dataset_path, model_name, config):
             input_text = f"{row['Prompt']}"
             expected_output = row["Correct Answer"]
 
+            logging.info(f"**Prompt: {input_text}")
+
             # Tokenize input and generate output
             inputs = tokenizer(input_text, return_tensors="pt", truncation=True)
             outputs = model.generate(**inputs, max_new_tokens=max_new_tokens)
@@ -71,6 +73,7 @@ def evaluate_model(task, dataset_path, model_name, config):
             if not output_text:
                 output_text = "X"
 
+            logging.info(f"**Response: {output_text}")
             # Record the result
             results.append({
                 "Task": task,
