@@ -1,9 +1,3 @@
-# information_extraction:
-#   cwet:
-#     dataset_path: SECURE - CWET.tsv
-#     input_column: Prompt       
-#     expected_column: Correct Answer 
-
 information_extraction:
   maet:
     dataset_path: datasets/SECURE/Dataset/SECURE - MAET.tsv
@@ -14,22 +8,22 @@ information_extraction:
     input_column: Prompt       
     expected_column: Correct Answer 
 
-# knowledge_understanding:
-#   kcv:
-#     dataset_path: datasets/SECURE/Dataset/SECURE - KCV.tsv
-#     input_column: Prompt       
-#     expected_column: Correct Answer 
-#   vood:
-#     dataset_path: datasets/SECURE/Dataset/SECURE - VOOD.tsv
-#     input_column: Prompt       
-#     expected_column: Correct Answer 
+knowledge_understanding:
+  kcv:
+    dataset_path: datasets/SECURE/Dataset/SECURE - KCV.tsv
+    input_column: Prompt       
+    expected_column: Correct Answer 
+  vood:
+    dataset_path: datasets/SECURE/Dataset/SECURE - VOOD.tsv
+    input_column: Prompt       
+    expected_column: Correct Answer 
 
-# reasoning_and_problem_solving:
-#   rert:
-#     dataset_path: datasets/SECURE/Dataset/SECURE - RERT.tsv
-#     input_column: Prompt       
-#     expected_column: Correct Answer 
-#   cpst:
-#     dataset_path: datasets/SECURE/Dataset/SECURE - CPST.tsv
-#     input_column: Prompt
-#     expected_column: Correct Answer
+reasoning_and_problem_solving:
+  rert:
+    dataset_path: datasets/SECURE/Dataset/SECURE - RERT.tsv
+    input_column: Prompt       
+    expected_column: Correct Answer 
+  cpst:
+    dataset_path: datasets/SECURE/Dataset/SECURE - CPST.tsv
+    input_column: Prompt
+    expected_column: Correct Answer
