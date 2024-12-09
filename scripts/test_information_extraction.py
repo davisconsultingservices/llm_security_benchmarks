@@ -75,7 +75,7 @@ def evaluate_model(task, dataset_path, model_name, config):
                 "Prompt": input_text,
                 "Expected Output": expected_output,
                 "Model Output": output_text.strip(),
-                "Correct": output_text.strip() == expected_output.strip(),
+                "Correct": str(output_text).strip() == str(expected_output).strip(),
             })
         except KeyError as e:
             logging.error(f"Missing key in dataset: {e}")
