@@ -3,10 +3,10 @@ information_extraction:
     dataset_path: datasets/SECURE/Dataset/SECURE - MAET.tsv
     input_column: Prompt       
     expected_column: Correct Answer 
-  # cwet:
-  #   dataset_path: datasets/SECURE/Dataset/SECURE - CWET.tsv
-  #   input_column: Prompt       
-  #   expected_column: Correct Answer 
+  cwet:
+    dataset_path: datasets/SECURE/Dataset/SECURE - CWET.tsv
+    input_column: Prompt       
+    expected_column: Correct Answer 
 
 knowledge_understanding:
   kcv:
