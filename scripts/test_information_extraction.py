@@ -56,26 +56,37 @@ def evaluate_model(task, dataset_path, model_name, config):
         try:
             # Construct input with fixed structure
             input_text = (
-                f"{row['Prompt']}\n"
-                f"A) {row['Option A']}\n"
-                f"B) {row['Option B']}\n"
-                f"C) {row['Option C']}\n"
-                f"D) {row['Option D']}"
+                f"{row['Prompt']}"#\n"
+                # f"A) {row['Option A']}\n"
+                # f"B) {row['Option B']}\n"
+                # f"C) {row['Option C']}\n"
+                # f"D) {row['Option D']}"
             )
             expected_output = row["Correct Answer"]
+
+            print("*Prompt*: ",input_text)
 
             # Tokenize input and generate output
             inputs = tokenizer(input_text, return_tensors="pt", truncation=True)
             outputs = model.generate(**inputs)
+
+            # print(outputs)
+
             output_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+            output_text = output_text.replace(input_text, "").strip()
+            if not output_text:
+                 output_text = "X"
+
+            print("\n*Response*:",output_text,"\n")
 
             # Record the result
             results.append({
                 "Task": task,
                 "Prompt": input_text,
                 "Expected Output": expected_output,
-                "Model Output": output_text.strip(),
-                "Correct": str(output_text).strip() == str(expected_output).strip(),
+                "Model Output": output_text,
+                "Correct": output_text == str(expected_output).strip(),
             })
         except KeyError as e:
             logging.error(f"Missing key in dataset: {e}")
