@@ -10,11 +10,11 @@
 #   type: causal
 #   max_new_tokens: 2048  # Assumed based on model size (1.5B params)
 
-# securityllm:
-#   tokenizer: ZySec-AI/SecurityLLM
-#   model: ZySec-AI/SecurityLLM
-#   type: causal
-#   max_new_tokens: 1024  # Security-focused models often limit generation to 1024 tokens
+securityllm:
+  tokenizer: ZySec-AI/SecurityLLM
+  model: ZySec-AI/SecurityLLM
+  type: causal
+  max_new_tokens: 1024  # Security-focused models often limit generation to 1024 tokens
 
 # llama3:
 #   tokenizer: meta-llama/Llama-3.2-3B
@@ -28,8 +28,8 @@
 #   type: causal
 #   max_new_tokens: 4096  # Assumes a larger max token limit due to model size
 
-gemma:
-  tokenizer: google/gemma-2-2b-it
-  model: google/gemma-2-2b-it
-  type: causal
-  max_new_tokens: 1024  # Assumed default for this model size
+# gemma:
+#   tokenizer: google/gemma-2-2b-it
+#   model: google/gemma-2-2b-it
+#   type: causal
+#   max_new_tokens: 1024  # Assumed default for this model size
