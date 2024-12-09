@@ -1,8 +1,8 @@
-# fastchat_t5:
-#   tokenizer: t5-small
-#   model: t5-small
-#   type: seq2seq
-#   max_new_tokens: 512  # T5-small typically handles up to 512 tokens
+fastchat_t5:
+  tokenizer: t5-small
+  model: t5-small
+  type: seq2seq
+  max_new_tokens: 512  # T5-small typically handles up to 512 tokens
 
 # dlite:
 #   tokenizer: aisquared/dlite-v2-1_5b
@@ -28,8 +28,8 @@
 #   type: causal
 #   max_new_tokens: 4096  # Assumes a larger max token limit due to model size
 
-gemma:
-  tokenizer: google/gemma-2-2b-it
-  model: google/gemma-2-2b-it
-  type: causal
-  max_new_tokens: 1024  # Assumed default for this model size
+# gemma:
+#   tokenizer: google/gemma-2-2b-it
+#   model: google/gemma-2-2b-it
+#   type: causal
+#   max_new_tokens: 1024  # Assumed default for this model size
