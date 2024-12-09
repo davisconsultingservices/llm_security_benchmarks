@@ -33,29 +33,37 @@ def load_model_and_tokenizer(config):
 
 def evaluate_model(task, dataset_path, model_name, config):
     logging.info(f"Evaluating {model_name} on {task}...")
+
+    # Load the tokenizer and model
     tokenizer, model = load_model_and_tokenizer(config)
+
+    # Load the dataset
     data = pd.read_csv(dataset_path, sep='\t')
+
+    # Determine the maximum prompt length in tokens
+    max_prompt_length = data["Prompt"].apply(lambda x: len(tokenizer(x)["input_ids"])).max()
+
+    # Use max_new_tokens from config if provided; otherwise, use max_prompt_length
+    max_new_tokens = config.get("max_new_tokens", max_prompt_length)
+    logging.info(f"Using max_new_tokens: {max_new_tokens}")
+
     results = []
 
     for _, row in data.iterrows():
         try:
             # Construct input with fixed structure
-            input_text = (
-                f"{row['Prompt']}"
-            )
+            input_text = f"{row['Prompt']}"
             expected_output = row["Correct Answer"]
-            # print("*Prompt*: ",input_text)
 
             # Tokenize input and generate output
             inputs = tokenizer(input_text, return_tensors="pt", truncation=True)
-            outputs = model.generate(**inputs)
-            # print(outputs)
+            outputs = model.generate(**inputs, max_new_tokens=max_new_tokens)
+
+            # Decode the output
             output_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
             output_text = output_text.replace(input_text, "").strip()
             if not output_text:
-                 output_text = "X"
-
-            # print("\n*Response*:",output_text,"\n")
+                output_text = "X"
 
             # Record the result
             results.append({
