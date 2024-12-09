@@ -1,46 +1,43 @@
-import pandas as pd
 import os
+import pandas as pd
+import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForCausalLM
-from transformers.utils import is_torch_available, is_tf_available, is_flax_available
 import logging
 
-logging.basicConfig(
-    level=logging.INFO,  # Ensure it's set to INFO or DEBUG
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
-)
-
 def load_model_and_tokenizer(config):
-    # Check for available backends
-    if not any([is_torch_available(), is_tf_available(), is_flax_available()]):
-        raise RuntimeError(
-            "No backend (PyTorch, TensorFlow, or Flax) is available. "
-            "Please install at least one framework. For example, to install PyTorch for CPU:\n"
-            "pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu"
-        )
+    """
+    Load the model and tokenizer with GPU support if available.
+    """
+    # Configure logging
+    logging.info("Initializing model and tokenizer...")
+
+    # Check for GPU availability
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if device.type == "cuda":
+        logging.info(f"Using GPU: {torch.cuda.get_device_name(0)}")
+    else:
+        logging.warning("GPU not available, falling back to CPU.")
 
     # Load tokenizer
     tokenizer = AutoTokenizer.from_pretrained(config["tokenizer"], token=True)
 
-    # Load model based on type and available backend
+    # Load model
     if config["type"] == "seq2seq":
-        if is_torch_available():
-            model = AutoModelForSeq2SeqLM.from_pretrained(config["model"], token=True)
-        else:
-            raise RuntimeError("PyTorch is required for seq2seq models.")
+        model = AutoModelForSeq2SeqLM.from_pretrained(config["model"], token=True).to(device)
     else:  # Causal model
-        if is_torch_available():
-            model = AutoModelForCausalLM.from_pretrained(config["model"], token=True)
-        else:
-            raise RuntimeError("PyTorch is required for causal models.")
+        model = AutoModelForCausalLM.from_pretrained(config["model"], token=True).to(device)
 
-    return tokenizer, model
+    return tokenizer, model, device
+
 
 def evaluate_model(task, dataset_path, model_name, config):
+    """
+    Evaluate the model on a specific task using the provided dataset.
+    """
     logging.info(f"Evaluating {model_name} on {task}...")
 
-    # Load tokenizer and model
-    tokenizer, model = load_model_and_tokenizer(config)
+    # Load tokenizer, model, and device
+    tokenizer, model, device = load_model_and_tokenizer(config)
 
     # Load dataset
     data = pd.read_csv(dataset_path, sep='\t')
@@ -64,16 +61,14 @@ def evaluate_model(task, dataset_path, model_name, config):
 
     results = []
 
-    for _, row in data.iterrows():
+    for idx, row in data.iterrows():
         try:
             # Construct input with fixed structure
             input_text = f"{row['Prompt']}"
             expected_output = row["Correct Answer"]
 
-            logging.info(f"**Prompt: {input_text}")
-
             # Tokenize input and generate output
-            inputs = tokenizer(input_text, return_tensors="pt", truncation=True)
+            inputs = tokenizer(input_text, return_tensors="pt", truncation=True).to(device)
             outputs = model.generate(**inputs, max_new_tokens=max_new_tokens)
 
             # Decode the output
@@ -81,8 +76,6 @@ def evaluate_model(task, dataset_path, model_name, config):
             output_text = output_text.replace(input_text, "").strip()
             if not output_text:
                 output_text = "X"
-
-            logging.info(f"**Response: {output_text}")
 
             # Record the result
             results.append({
@@ -96,7 +89,7 @@ def evaluate_model(task, dataset_path, model_name, config):
             logging.error(f"Missing key in dataset: {e}")
             continue
         except Exception as e:
-            logging.error(f"Error processing row: {e}")
+            logging.error(f"Error processing row {idx}: {e}")
             continue
 
     # Save results
