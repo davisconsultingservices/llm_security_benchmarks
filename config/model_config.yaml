@@ -10,17 +10,17 @@
 #   type: causal
 #   max_new_tokens: 2048  # Assumed based on model size (1.5B params)
 
-securityllm:
-  tokenizer: ZySec-AI/SecurityLLM
-  model: ZySec-AI/SecurityLLM
-  type: causal
-  max_new_tokens: 1024  # Security-focused models often limit generation to 1024 tokens
-
-# llama3:
-#   tokenizer: meta-llama/Llama-3.2-3B
-#   model: meta-llama/Llama-3.2-3B
+# securityllm:
+#   tokenizer: ZySec-AI/SecurityLLM
+#   model: ZySec-AI/SecurityLLM
 #   type: causal
-#   max_new_tokens: 2048  # Common default for LLaMA models
+#   max_new_tokens: 1024  # Security-focused models often limit generation to 1024 tokens
+
+llama3:
+  tokenizer: meta-llama/Llama-3.2-3B
+  model: meta-llama/Llama-3.2-3B
+  type: causal
+  max_new_tokens: 2048  # Common default for LLaMA models
 
 # llama2:
 #   tokenizer: meta-llama/Llama-2-7b-hf
