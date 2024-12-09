@@ -1,5 +1,6 @@
 import pandas as pd
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForCausalLM
+from transformers.utils import is_torch_available, is_tf_available, is_flax_available
 import yaml
 import os
 import logging
@@ -17,13 +18,31 @@ with open("config/task_config.yaml", "r") as f:
 datasets = tasks["information_extraction"]
 
 def load_model_and_tokenizer(config):
-    tokenizer = AutoTokenizer.from_pretrained(config["tokenizer"], use_auth_token=True)
-    model = (
-        AutoModelForSeq2SeqLM.from_pretrained(config["model"], use_auth_token=True)
-        if config["type"] == "seq2seq"
-        else AutoModelForCausalLM.from_pretrained(config["model"], use_auth_token=True)
-    )
+    # Check for available backends
+    if not any([is_torch_available(), is_tf_available(), is_flax_available()]):
+        raise RuntimeError(
+            "No backend (PyTorch, TensorFlow, or Flax) is available. "
+            "Please install at least one framework. For example, to install PyTorch for CPU:\n"
+            "pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu"
+        )
+
+    # Load tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(config["tokenizer"], token=True)
+
+    # Load model based on type and available backend
+    if config["type"] == "seq2seq":
+        if is_torch_available():
+            model = AutoModelForSeq2SeqLM.from_pretrained(config["model"], token=True)
+        else:
+            raise RuntimeError("PyTorch is required for seq2seq models.")
+    else:  # Causal model
+        if is_torch_available():
+            model = AutoModelForCausalLM.from_pretrained(config["model"], token=True)
+        else:
+            raise RuntimeError("PyTorch is required for causal models.")
+
     return tokenizer, model
+
 
 def evaluate_model(task, dataset_path, model_name, config):
     logging.info(f"Evaluating {model_name} on {task}...")
