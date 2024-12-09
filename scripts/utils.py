@@ -44,7 +44,7 @@ def evaluate_model(task, dataset_path, model_name, config):
                 f"{row['Prompt']}"
             )
             expected_output = row["Correct Answer"]
-            print("*Prompt*: ",input_text)
+            # print("*Prompt*: ",input_text)
 
             # Tokenize input and generate output
             inputs = tokenizer(input_text, return_tensors="pt", truncation=True)
@@ -55,7 +55,7 @@ def evaluate_model(task, dataset_path, model_name, config):
             if not output_text:
                  output_text = "X"
 
-            print("\n*Response*:",output_text,"\n")
+            # print("\n*Response*:",output_text,"\n")
 
             # Record the result
             results.append({
