@@ -1,14 +1,14 @@
-fastchat_t5:
-  tokenizer: t5-small
-  model: t5-small
-  type: seq2seq
-  max_new_tokens: 512  # T5-small typically handles up to 512 tokens
+# fastchat_t5:
+#   tokenizer: t5-small
+#   model: t5-small
+#   type: seq2seq
+#   max_new_tokens: 512  # T5-small typically handles up to 512 tokens
 
-# dlite:
-#   tokenizer: aisquared/dlite-v2-1_5b
-#   model: aisquared/dlite-v2-1_5b
-#   type: causal
-#   max_new_tokens: 2048  # Assumed based on model size (1.5B params)
+dlite:
+  tokenizer: aisquared/dlite-v2-1_5b
+  model: aisquared/dlite-v2-1_5b
+  type: causal
+  max_new_tokens: 2048  # Assumed based on model size (1.5B params)
 
 # securityllm:
 #   tokenizer: ZySec-AI/SecurityLLM
