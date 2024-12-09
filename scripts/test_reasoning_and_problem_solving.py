@@ -1,7 +1,12 @@
 import pandas as pd
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForCausalLM
+from transformers.utils import is_torch_available, is_tf_available, is_flax_available
 import yaml
 import os
+import logging
+
+# Setup logging
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 # Load configurations
 with open("config/model_config.yaml", "r") as f:
@@ -12,41 +17,67 @@ with open("config/task_config.yaml", "r") as f:
 
 datasets = tasks["reasoning_and_problem_solving"]
 
+def load_model_and_tokenizer(config):
+    # Check for available backends
+    if not any([is_torch_available(), is_tf_available(), is_flax_available()]):
+        raise RuntimeError(
+            "No backend (PyTorch, TensorFlow, or Flax) is available. "
+            "Please install at least one framework. For example, to install PyTorch for CPU:\n"
+            "pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu"
+        )
+
+    # Load tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(config["tokenizer"], token=True)
+
+    # Load model based on type and available backend
+    if config["type"] == "seq2seq":
+        if is_torch_available():
+            model = AutoModelForSeq2SeqLM.from_pretrained(config["model"], token=True)
+        else:
+            raise RuntimeError("PyTorch is required for seq2seq models.")
+    else:  # Causal model
+        if is_torch_available():
+            model = AutoModelForCausalLM.from_pretrained(config["model"], token=True)
+        else:
+            raise RuntimeError("PyTorch is required for causal models.")
+
+    return tokenizer, model
+
+
 def evaluate_model(task, dataset_path, model_name, config):
-    print(f"Evaluating {model_name} on {task}...")
-    tokenizer = AutoTokenizer.from_pretrained(config["tokenizer"])
-    model = (
-        AutoModelForSeq2SeqLM.from_pretrained(config["model"])
-        if config["type"] == "seq2seq"
-        else AutoModelForCausalLM.from_pretrained(config["model"])
-    )
+    logging.info(f"Evaluating {model_name} on {task}...")
+    tokenizer, model = load_model_and_tokenizer(config)
 
     # Load dataset
     data = pd.read_csv(dataset_path, sep='\t')
     results = []
 
     for _, row in data.iterrows():
-        # Handle different column structures for RERT and CPST
-        if task == "rert":
-            input_text = row["Prompt"]  # Use the 'Prompt' column for RERT
-            expected_output = row["Correct Answer"]  # Correct answer column for RERT
-        elif task == "cpst":
-            input_text = f"{row['Prompt']} CVSS Vector: {row['CVSS v3 Vector String']}"
-            expected_output = row["Correct Answer"]
+        try:
+            # Handle different column structures for RERT and CPST
+            if task == "rert":
+                input_text = row["Prompt"]  # Use the 'Prompt' column for RERT
+                expected_output = row["Correct Answer"]  # Correct answer column for RERT
+            elif task == "cpst":
+                input_text = f"{row['Prompt']} CVSS Vector: {row['CVSS v3 Vector String']}"
+                expected_output = row["Correct Answer"]
 
-        # Tokenize input and generate output
-        inputs = tokenizer(input_text, return_tensors="pt", truncation=True)
-        outputs = model.generate(**inputs)
-        output_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+            # Tokenize input and generate output
+            inputs = tokenizer(input_text, return_tensors="pt", truncation=True)
+            outputs = model.generate(**inputs)
+            output_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-        # Record the result
-        results.append({
-            "Task": task,
-            "Prompt": input_text,
-            "Expected Output": expected_output,
-            "Model Output": output_text.strip(),
-            "Correct": output_text.strip() == expected_output.strip(),
-        })
+            # Record the result
+            results.append({
+                "Task": task,
+                "Prompt": input_text,
+                "Expected Output": expected_output,
+                "Model Output": output_text.strip(),
+                "Correct": output_text.strip() == expected_output.strip(),
+            })
+        except KeyError as e:
+            logging.error(f"Missing key in dataset: {e}")
+            continue
 
     # Save results
     os.makedirs("results", exist_ok=True)
