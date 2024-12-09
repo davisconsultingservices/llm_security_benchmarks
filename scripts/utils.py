@@ -36,18 +36,21 @@ def load_model_and_tokenizer(config):
 
     return tokenizer, model
 
-
 def evaluate_model(task, dataset_path, model_name, config):
     logging.info(f"Evaluating {model_name} on {task}...")
 
-    # Load the tokenizer and model
+    # Load tokenizer and model
     tokenizer, model = load_model_and_tokenizer(config)
 
-    # Load the dataset
+    # Load dataset
     data = pd.read_csv(dataset_path, sep='\t')
 
-    # Determine the maximum prompt length in tokens
+    # Ensure all values in the "Prompt" column are strings
+    data["Prompt"] = data["Prompt"].astype(str)
+
+    # Determine the maximum prompt length
     max_prompt_length = data["Prompt"].apply(lambda x: len(tokenizer(x)["input_ids"])).max()
+    logging.info(f"Maximum prompt length for {task}: {max_prompt_length}")
 
     # Use max_new_tokens from config if provided; otherwise, use max_prompt_length
     max_new_tokens = config.get("max_new_tokens", max_prompt_length)
@@ -74,6 +77,7 @@ def evaluate_model(task, dataset_path, model_name, config):
                 output_text = "X"
 
             logging.info(f"**Response: {output_text}")
+
             # Record the result
             results.append({
                 "Task": task,
@@ -84,6 +88,9 @@ def evaluate_model(task, dataset_path, model_name, config):
             })
         except KeyError as e:
             logging.error(f"Missing key in dataset: {e}")
+            continue
+        except Exception as e:
+            logging.error(f"Error processing row: {e}")
             continue
 
     # Save results
