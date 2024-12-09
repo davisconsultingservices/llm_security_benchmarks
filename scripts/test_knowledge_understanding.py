@@ -1,5 +1,14 @@
 import yaml
 from utils import evaluate_model
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
+
+logging.info("knowledge_understanding started successfully.")
 
 with open("config/model_config.yaml", "r") as f:
     models = yaml.safe_load(f)

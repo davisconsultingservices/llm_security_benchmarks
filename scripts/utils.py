@@ -4,6 +4,12 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForCausa
 from transformers.utils import is_torch_available, is_tf_available, is_flax_available
 import logging
 
+logging.basicConfig(
+    level=logging.INFO,  # Ensure it's set to INFO or DEBUG
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
+
 def load_model_and_tokenizer(config):
     # Check for available backends
     if not any([is_torch_available(), is_tf_available(), is_flax_available()]):
