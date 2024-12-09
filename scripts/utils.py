@@ -48,27 +48,19 @@ def evaluate_model(task, dataset_path, model_name, config):
     # Ensure all values in the "Prompt" column are strings
     data["Prompt"] = data["Prompt"].astype(str)
 
-    # Determine the maximum prompt length
-    max_prompt_length = data["Prompt"].apply(lambda x: len(tokenizer(x)["input_ids"])).max()
-    logging.info(f"Maximum prompt length for {task}: {max_prompt_length}")
-
     # Calculate maximum expected output length
     max_expected_length = data["Correct Answer"].apply(lambda x: len(tokenizer(x)["input_ids"])).max()
 
-    # Add a small buffer for safety
-    buffer = 5
-    calculated_max_new_tokens = max(max_prompt_length, max_expected_length + buffer)
+    # Add a small padding of 10 tokens
+    max_new_tokens = max_expected_length + 10
 
     # Ensure max_new_tokens does not exceed model's capacity
     model_max_tokens = model.config.max_position_embeddings
-    if calculated_max_new_tokens > model_max_tokens:
-        logging.warning(f"Calculated max_new_tokens ({calculated_max_new_tokens}) exceeds model's capacity ({model_max_tokens}). Using model max.")
+    if max_new_tokens > model_max_tokens:
+        logging.warning(f"Calculated max_new_tokens ({max_new_tokens}) exceeds model's capacity ({model_max_tokens}). Using model max.")
         max_new_tokens = model_max_tokens
-    else:
-        max_new_tokens = calculated_max_new_tokens
 
     logging.info(f"Final max_new_tokens: {max_new_tokens}")
-
 
     results = []
 
