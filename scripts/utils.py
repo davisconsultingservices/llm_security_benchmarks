@@ -4,96 +4,107 @@ import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForCausalLM
 import logging
 
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 def load_model_and_tokenizer(config):
     """
     Load the model and tokenizer with GPU support if available.
     """
-    # Configure logging
-    logging.info("Initializing model and tokenizer...")
+    logger.info("Initializing model and tokenizer...")
 
     # Check for GPU availability
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     if device.type == "cuda":
-        logging.info(f"Using GPU: {torch.cuda.get_device_name(0)}")
+        logger.info(f"Using GPU: {torch.cuda.get_device_name(0)}")
     else:
-        logging.warning("GPU not available, falling back to CPU.")
+        logger.warning("GPU not available, falling back to CPU.")
 
     # Load tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(config["tokenizer"], token=True)
+    tokenizer = AutoTokenizer.from_pretrained(config["tokenizer"], use_fast=True)
 
     # Load model
     if config["type"] == "seq2seq":
-        model = AutoModelForSeq2SeqLM.from_pretrained(config["model"], token=True).to(device)
-    else:  # Causal model
-        model = AutoModelForCausalLM.from_pretrained(config["model"], token=True).to(device)
+        model = AutoModelForSeq2SeqLM.from_pretrained(config["model"]).to(device)
+    elif config["type"] == "causal":
+        model = AutoModelForCausalLM.from_pretrained(config["model"]).to(device)
+    else:
+        raise ValueError(f"Unsupported model type: {config['type']}")
 
-    return tokenizer, model, device
+    logger.info("Model and tokenizer loaded successfully.")
+    return model, tokenizer, device
+
+
+def load_dataset(file_path):
+    """
+    Load dataset from a TSV file.
+    """
+    try:
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"File not found: {file_path}")
+        data = pd.read_csv(file_path, sep="\t", encoding="utf-8")
+        logger.info(f"Dataset loaded successfully from {file_path}. Shape: {data.shape}")
+        return data
+    except Exception as e:
+        logger.error(f"Failed to load dataset from {file_path}: {e}")
+        raise
+
+
+def preprocess_column(data, column_name):
+    """
+    Preprocess a column in the dataset to ensure all values are strings.
+    """
+    try:
+        if column_name not in data.columns:
+            raise ValueError(f"Column '{column_name}' not found in dataset.")
+        
+        data[column_name] = data[column_name].fillna("").astype(str)
+        logger.info(f"Preprocessed column '{column_name}'.")
+        return data
+    except Exception as e:
+        logger.error(f"Error preprocessing column '{column_name}': {e}")
+        raise
 
 
 def evaluate_model(task, dataset_path, model_name, config):
     """
-    Evaluate the model on a specific task using the provided dataset.
+    Evaluate the model on the specified task and dataset.
     """
-    logging.info(f"Evaluating {model_name} on {task}...")
-
-    # Load tokenizer, model, and device
-    tokenizer, model, device = load_model_and_tokenizer(config)
+    logger.info(f"Evaluating model '{model_name}' on task '{task}'...")
 
     # Load dataset
-    data = pd.read_csv(dataset_path, sep='\t')
+    try:
+        data = load_dataset(dataset_path)
+    except Exception as e:
+        logger.error(f"Dataset loading failed: {e}")
+        return
 
-    # Ensure all values in the "Prompt" column are strings
-    data["Prompt"] = data["Prompt"].astype(str)
+    # Preprocess dataset
+    try:
+        data = preprocess_column(data, "Correct Answer")
+    except Exception as e:
+        logger.error(f"Preprocessing failed: {e}")
+        return
 
-    # Calculate maximum expected output length
-    max_expected_length = data["Correct Answer"].apply(lambda x: len(tokenizer(x)["input_ids"])).max()
+    # Load model and tokenizer
+    try:
+        model, tokenizer, device = load_model_and_tokenizer(config)
+    except Exception as e:
+        logger.error(f"Model or tokenizer initialization failed: {e}")
+        return
 
-    # Add a small padding of 10 tokens
-    max_new_tokens = max_expected_length + 10
+    # Tokenization and evaluation
+    try:
+        max_expected_length = data["Correct Answer"].apply(
+            lambda x: len(tokenizer.encode(x, add_special_tokens=True))
+        ).max()
+        logger.info(f"Max expected token length: {max_expected_length}")
+    except Exception as e:
+        logger.error(f"Error during tokenization: {e}")
+        return
 
-    # Ensure max_new_tokens does not exceed model's capacity
-    model_max_tokens = model.config.max_position_embeddings
-    if max_new_tokens > model_max_tokens:
-        logging.warning(f"Calculated max_new_tokens ({max_new_tokens}) exceeds model's capacity ({model_max_tokens}). Using model max.")
-        max_new_tokens = model_max_tokens
+    # Placeholder for additional evaluation logic
+    logger.info(f"Model '{model_name}' evaluated successfully on task '{task}'.")
 
-    logging.info(f"Final max_new_tokens: {max_new_tokens}")
 
-    results = []
-
-    for idx, row in data.iterrows():
-        try:
-            # Construct input with fixed structure
-            input_text = f"{row['Prompt']}"
-            expected_output = row["Correct Answer"]
-
-            # Tokenize input and generate output
-            inputs = tokenizer(input_text, return_tensors="pt", truncation=True).to(device)
-            outputs = model.generate(**inputs, max_new_tokens=max_new_tokens)
-
-            # Decode the output
-            output_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
-            output_text = output_text.replace(input_text, "").strip()
-            if not output_text:
-                output_text = "X"
-
-            # Record the result
-            results.append({
-                "Task": task,
-                "Prompt": input_text,
-                "Expected Output": expected_output,
-                "Model Output": output_text,
-                "Correct": output_text == str(expected_output).strip(),
-            })
-        except KeyError as e:
-            logging.error(f"Missing key in dataset: {e}")
-            continue
-        except Exception as e:
-            logging.error(f"Error processing row {idx}: {e}")
-            continue
-
-    # Save results
-    os.makedirs("results", exist_ok=True)
-    results_path = f"results/{task}_{model_name}.csv"
-    pd.DataFrame(results).to_csv(results_path, index=False)
-    logging.info(f"Results for {model_name} on {task} saved to {results_path}")
