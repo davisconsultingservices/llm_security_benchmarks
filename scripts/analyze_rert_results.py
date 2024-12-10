@@ -48,11 +48,11 @@ result_files = glob.glob(os.path.join(results_dir, "rert_*.csv"))
 # Process each file
 for file_path in result_files:
 
-    if (file_path == "results/rert_fastchat_t5.csv" or
-        file_path == "results/rert_dlite.csv" or
-        file_path == "results/rert_gemma.csv" or 
-        file_path == "results/rert_llama3.csv"):
-        continue
+    # if (file_path == "results/rert_fastchat_t5.csv" or
+    #     file_path == "results/rert_dlite.csv" or
+    #     file_path == "results/rert_gemma.csv" or 
+    #     file_path == "results/rert_llama3.csv"):
+    #     continue
 
     # Load the result CSV
     df = pd.read_csv(file_path)
