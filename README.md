@@ -19,45 +19,56 @@ This repository is dedicated to benchmarking lightweight, open-source Large Lang
 
 ---
 
+## **Tests**
+
+1. **`test_information_extraction.py`**  
+   - **Description**: Tests the ability of models to extract information such as MITRE ATT&CK tactics and CWE weaknesses.
+   - **Dataset**: SECURE - MAET.tsv, CWET.tsv
+
+2. **`test_knowledge_understanding.py`**  
+   - **Description**: Evaluates models on understanding cybersecurity concepts and known vulnerabilities.
+   - **Dataset**: SECURE - KCV.tsv
+
+3. **`test_reasoning_and_problem_solving.py`**  
+   - **Description**: Assesses reasoning about cybersecurity risks and solving CVSS-related problems.
+   - **Dataset**: SECURE - RERT.tsv, CPST.tsv
+
+---
+
 ## **Plotting Functions**
 
-The repository includes the following plotting scripts to visualize benchmarking results. The generated plots are saved in the `results/plots/` directory:
+The repository includes scripts to visualize the results. Each script generates plots that can be accessed directly below:
 
 1. **`plot_density_results.py`**  
-   - **Description**: Plots the density of correct vs. incorrect predictions for each model.
-   - **Outputs**: 
-     - `fastchat_correct_vs_incorrect_density.png`
-     - `gemma.csv_correct_vs_incorrect_density.png`
-     - `securityllm.csv_correct_vs_incorrect_density.png`
-   - **Directory**: [results/plots/](results/plots/)
+   - **Description**: Plots the density of correct vs. incorrect predictions for each model.  
+   - **Results**:  
+     - [FastChat Density Plot](results/plots/fastchat_correct_vs_incorrect_density.png)  
+     - [Gemma Density Plot](results/plots/gemma.csv_correct_vs_incorrect_density.png)  
+     - [SecurityLLM Density Plot](results/plots/securityllm.csv_correct_vs_incorrect_density.png)
 
 2. **`plot_heatmap_results.py`**  
-   - **Description**: Creates heatmaps to show the accuracy of models across datasets and tasks.
-   - **Outputs**: 
-     - `fastchat_accuracy_heatmap.png`
-     - `gemma.csv_accuracy_heatmap.png`
-     - `securityllm.csv_accuracy_heatmap.png`
-   - **Directory**: [results/plots/](results/plots/)
+   - **Description**: Creates heatmaps to visualize model accuracy across datasets and tasks.  
+   - **Results**:  
+     - [FastChat Accuracy Heatmap](results/plots/fastchat_accuracy_heatmap.png)  
+     - [Gemma Accuracy Heatmap](results/plots/gemma.csv_accuracy_heatmap.png)  
+     - [SecurityLLM Accuracy Heatmap](results/plots/securityllm.csv_accuracy_heatmap.png)
 
 3. **`plot_violin_results.py`**  
-   - **Description**: Generates violin plots to illustrate the performance distribution of models across tasks and datasets.
-   - **Outputs**: 
-     - `fastchat_violinplot_by_task_and_dataset.png`
-     - `gemma.csv_violinplot_by_task_and_dataset.png`
-     - `securityllm.csv_violinplot_by_task_and_dataset.png`
-   - **Directory**: [results/plots/](results/plots/)
+   - **Description**: Generates violin plots to illustrate performance distribution across tasks and datasets.  
+   - **Results**:  
+     - [FastChat Violin Plot](results/plots/fastchat_violinplot_by_task_and_dataset.png)  
+     - [Gemma Violin Plot](results/plots/gemma.csv_violinplot_by_task_and_dataset.png)  
+     - [SecurityLLM Violin Plot](results/plots/securityllm.csv_violinplot_by_task_and_dataset.png)
 
 4. **`plot_performance_results.py`**  
-   - **Description**: Compares task performance across models using bar plots.
-   - **Output**: 
-     - `task_performance_comparison_across_models.png`
-   - **Directory**: [results/plots/](results/plots/)
+   - **Description**: Compares task performance across models using bar plots.  
+   - **Results**:  
+     - [Task Performance Comparison](results/plots/task_performance_comparison_across_models.png)
 
 5. **`plot_sensitivity_results.py`**  
-   - **Description**: Visualizes the sensitivity analysis of models for datasets/tasks.
-   - **Output**: 
-     - `dataset_sensitivity_analysis.png`
-   - **Directory**: [results/plots/](results/plots/)
+   - **Description**: Visualizes sensitivity analysis of models for datasets/tasks.  
+   - **Results**:  
+     - [Dataset Sensitivity Analysis](results/plots/dataset_sensitivity_analysis.png)
 
 ---
 
@@ -92,7 +103,7 @@ python scripts/test_reasoning_and_problem_solving.py
 ```
 
 ### **5. Generate Plots**
-After evaluations, generate visualizations using the plotting scripts:
+Run the plotting scripts to visualize the results:
 ```bash
 python scripts/plot_density_results.py
 python scripts/plot_heatmap_results.py
@@ -100,12 +111,6 @@ python scripts/plot_violin_results.py
 python scripts/plot_performance_results.py
 python scripts/plot_sensitivity_results.py
 ```
-
-### **6. View Results**
-Plots and visualizations are saved in the `results/plots/` directory. Example outputs include:
-- `fastchat_correct_vs_incorrect_density.png`
-- `fastchat_accuracy_heatmap.png`
-- `task_performance_comparison_across_models.png`
 
 ---
 
