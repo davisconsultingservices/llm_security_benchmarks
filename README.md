@@ -8,61 +8,56 @@ This repository is dedicated to benchmarking lightweight, open-source Large Lang
 
 ## **Scope**
 
-**Evaluate the following LLMs against the SECURE benchmark dataset.**
+**Evaluate the following LLMs against the SECURE benchmark dataset:**
 
-- [**FastChat-T5**](https://huggingface.co/lmsys/fastchat-t5): Lightweight T5 variant for seq2seq tasks.
+- [**FastChat-T5**](https://huggingface.co/lmsys/fastchat-t5): Lightweight T5 variant for sequence-to-sequence tasks.
 - [**DLite**](https://huggingface.co/aisquared/dlite-v2-1_5b): Lightweight GPT-based model for causal tasks.
 - [**ZySec-AI/SecurityLLM**](https://huggingface.co/ZySec-AI/SecurityLLM): Specialized LLM for security-specific tasks.
 - [**LLaMA 2**](https://huggingface.co/meta-llama/Llama-2-7b-hf): Lightweight model for reasoning and causal tasks.
-- [**LLaMA 3.2**](https://huggingface.co/meta-llama/Llama-3.2-3B): Advanced model for causal and seq2seq tasks.
+- [**LLaMA 3.2**](https://huggingface.co/meta-llama/Llama-3.2-3B): Advanced model for causal and sequence-to-sequence tasks.
 - [**Gemma**](https://huggingface.co/gemma-ai): Lightweight model for cybersecurity reasoning.
 
 ---
 
-## **Mapping of SECURE Datasets to Research Categories**
+## **Plotting Functions**
 
-| **Research Category**        | **SECURE Task**                   | **Dataset**               | **Objective**                                        |
-|-------------------------------|------------------------------------|---------------------------|-----------------------------------------------------|
-| **Information Extraction**    | MAET (MITRE ATT&CK Extraction)    | `SECURE - MAET.tsv`       | Extract tactics, techniques, and procedures.       |
-|                               | CWET (Common Weakness Extraction) | `SECURE - CWET.tsv`       | Extract weaknesses from the CWE database.          |
-| **Knowledge Understanding**   | KCV (Knowledge Test)              | `SECURE - KCV.tsv`        | Assess understanding of known vulnerabilities.     |
-| **Reasoning and Problem-Solving** | RERT (Risk Evaluation Reasoning)| `SECURE - RERT.tsv`       | Evaluate reasoning about cybersecurity risks.       |
-|                               | CPST (CVSS Problem-Solving)       | `SECURE - CPST.tsv`       | Solve CVSS-related problems.                       |
+The repository includes the following plotting scripts to visualize benchmarking results. The generated plots are saved in the `results/plots/` directory:
 
----
+1. **`plot_density_results.py`**  
+   - **Description**: Plots the density of correct vs. incorrect predictions for each model.
+   - **Outputs**: 
+     - `fastchat_correct_vs_incorrect_density.png`
+     - `gemma.csv_correct_vs_incorrect_density.png`
+     - `securityllm.csv_correct_vs_incorrect_density.png`
+   - **Directory**: [results/plots/](results/plots/)
 
-## **Approach**
+2. **`plot_heatmap_results.py`**  
+   - **Description**: Creates heatmaps to show the accuracy of models across datasets and tasks.
+   - **Outputs**: 
+     - `fastchat_accuracy_heatmap.png`
+     - `gemma.csv_accuracy_heatmap.png`
+     - `securityllm.csv_accuracy_heatmap.png`
+   - **Directory**: [results/plots/](results/plots/)
 
-Our methodology involves:
+3. **`plot_violin_results.py`**  
+   - **Description**: Generates violin plots to illustrate the performance distribution of models across tasks and datasets.
+   - **Outputs**: 
+     - `fastchat_violinplot_by_task_and_dataset.png`
+     - `gemma.csv_violinplot_by_task_and_dataset.png`
+     - `securityllm.csv_violinplot_by_task_and_dataset.png`
+   - **Directory**: [results/plots/](results/plots/)
 
-1. **Dataset Utilization**:
-   - Leveraging the SECURE dataset, with tasks grouped under three research categories:
-     - **Information Extraction**
-     - **Knowledge Understanding**
-     - **Reasoning and Problem-Solving**
-2. **Model Evaluation**:
-   - Running all models on each dataset using external configuration files to define model settings (`model_config.yaml`) and task datasets (`task_config.yaml`).
-3. **Performance Analysis**:
-   - Evaluating performance metrics such as accuracy, precision, recall, and F1-score for each model and task. (TODO)
+4. **`plot_performance_results.py`**  
+   - **Description**: Compares task performance across models using bar plots.
+   - **Output**: 
+     - `task_performance_comparison_across_models.png`
+   - **Directory**: [results/plots/](results/plots/)
 
----
-
-## **Repository Structure**
-
-```
-.
-├── config/                     # Configuration files for models and tasks
-│   ├── model_config.yaml       # Model definitions (e.g., tokenizer, model, type)
-│   └── task_config.yaml        # Task-specific datasets and column mappings
-├── datasets/SECURE/            # SECURE benchmark datasets (e.g., MAET.tsv, CWET.tsv)
-│   └── Dataset/
-├── results/                    # Generated results for model evaluations
-├── scripts/                    # Evaluation scripts for each research category
-│   ├── test_information_extraction.py
-│   ├── test_knowledge_understanding.py
-│   └── test_reasoning_and_problem_solving.py
-└── README.md                   # Project documentation
-```
+5. **`plot_sensitivity_results.py`**  
+   - **Description**: Visualizes the sensitivity analysis of models for datasets/tasks.
+   - **Output**: 
+     - `dataset_sensitivity_analysis.png`
+   - **Directory**: [results/plots/](results/plots/)
 
 ---
 
@@ -75,7 +70,7 @@ cd llm_security_benchmarks
 ```
 
 ### **2. Initialize Submodules**
-If datasets are managed as a submodule, initialize and update them:
+If datasets are managed as submodules, initialize and update them:
 ```bash
 git submodule update --init --recursive
 ```
@@ -89,21 +84,28 @@ pip install -r requirements.txt
 ```
 
 ### **4. Run Evaluations**
-Run the evaluation scripts for each research category:
+Execute the evaluation scripts for each research category:
 ```bash
 python scripts/test_information_extraction.py
 python scripts/test_knowledge_understanding.py
 python scripts/test_reasoning_and_problem_solving.py
 ```
 
-### **5. View Results**
-Results are saved in the `results/` directory as task-specific CSV files:
+### **5. Generate Plots**
+After evaluations, generate visualizations using the plotting scripts:
 ```bash
-results/
-├── maet_fastchat_t5.csv
-├── maet_llama3.csv
-├── ...
+python scripts/plot_density_results.py
+python scripts/plot_heatmap_results.py
+python scripts/plot_violin_results.py
+python scripts/plot_performance_results.py
+python scripts/plot_sensitivity_results.py
 ```
+
+### **6. View Results**
+Plots and visualizations are saved in the `results/plots/` directory. Example outputs include:
+- `fastchat_correct_vs_incorrect_density.png`
+- `fastchat_accuracy_heatmap.png`
+- `task_performance_comparison_across_models.png`
 
 ---
 
@@ -118,4 +120,4 @@ For more details, refer to the [SECURE Benchmark Paper](https://arxiv.org/pdf/24
 
 ## **License**
 
-This project is licensed under the [Apache-2.0 License](LICENSE). 
+This project is licensed under the [Apache-2.0 License](LICENSE).
