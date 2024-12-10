@@ -45,7 +45,8 @@ def evaluate_model(task, dataset_path, model_name, config):
     ).max()
 
     max_new_tokens = max_expected_length + 10
-    model_max_tokens = model.config.max_position_embeddings
+    model_max_tokens = getattr(model.config, 'max_position_embeddings', config['max_new_tokens'])
+
     if max_new_tokens > model_max_tokens:
         logging.warning(f"max_new_tokens ({max_new_tokens}) exceeds model's capacity ({model_max_tokens}). Using model max.")
         max_new_tokens = model_max_tokens

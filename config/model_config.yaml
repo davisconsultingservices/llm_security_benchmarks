@@ -4,32 +4,32 @@ fastchat_t5:
   type: seq2seq
   max_new_tokens: 512  # T5-small typically handles up to 512 tokens
 
-# dlite:
-#   tokenizer: aisquared/dlite-v2-1_5b
-#   model: aisquared/dlite-v2-1_5b
-#   type: causal
-#   max_new_tokens: 2048  # Assumed based on model size (1.5B params)
+dlite:
+  tokenizer: aisquared/dlite-v2-1_5b
+  model: aisquared/dlite-v2-1_5b
+  type: causal
+  max_new_tokens: 2048  # Assumed based on model size (1.5B params)
 
-# securityllm:
-#   tokenizer: ZySec-AI/SecurityLLM
-#   model: ZySec-AI/SecurityLLM
-#   type: causal
-#   max_new_tokens: 1024  # Security-focused models often limit generation to 1024 tokens
+securityllm:
+  tokenizer: ZySec-AI/SecurityLLM
+  model: ZySec-AI/SecurityLLM
+  type: causal
+  max_new_tokens: 1024  # Security-focused models often limit generation to 1024 tokens
 
-# llama3:
-#   tokenizer: meta-llama/Llama-3.2-3B
-#   model: meta-llama/Llama-3.2-3B
-#   type: causal
-#   max_new_tokens: 2048  # Common default for LLaMA models
+llama3:
+  tokenizer: meta-llama/Llama-3.2-3B
+  model: meta-llama/Llama-3.2-3B
+  type: causal
+  max_new_tokens: 2048  # Common default for LLaMA models
 
-# llama2:
-#   tokenizer: meta-llama/Llama-2-7b-hf
-#   model: meta-llama/Llama-2-7b-hf
-#   type: causal
-#   max_new_tokens: 4096  # Assumes a larger max token limit due to model size
+llama2:
+  tokenizer: meta-llama/Llama-2-7b-hf
+  model: meta-llama/Llama-2-7b-hf
+  type: causal
+  max_new_tokens: 4096  # Assumes a larger max token limit due to model size
 
-# gemma:
-#   tokenizer: google/gemma-2-2b-it
-#   model: google/gemma-2-2b-it
-#   type: causal
-#   max_new_tokens: 1024  # Assumed default for this model size
+gemma:
+  tokenizer: google/gemma-2-2b-it
+  model: google/gemma-2-2b-it
+  type: causal
+  max_new_tokens: 1024  # Assumed default for this model size
