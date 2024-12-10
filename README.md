@@ -4,20 +4,25 @@
 
 This repository is dedicated to benchmarking lightweight, open-source Large Language Models (LLMs) for their effectiveness in providing security guidance. Our work builds upon the [SECURE Benchmark](https://arxiv.org/pdf/2405.20441) to evaluate selected models across predefined cybersecurity tasks using external configuration files for flexibility and scalability.
 
+
+See the [RESULTS](results/README.md)
+
 ---
 
 ## **Scope**
 
 **Evaluate the following LLMs against the SECURE benchmark dataset:**
 
-- [**FastChat-T5**](https://huggingface.co/lmsys/fastchat-t5): Lightweight T5 variant for sequence-to-sequence tasks.
 - [**DLite**](https://huggingface.co/aisquared/dlite-v2-1_5b): Lightweight GPT-based model for causal tasks.
-- [**ZySec-AI/SecurityLLM**](https://huggingface.co/ZySec-AI/SecurityLLM): Specialized LLM for security-specific tasks.
+- [**FastChat-T5**](https://huggingface.co/lmsys/fastchat-t5): Lightweight T5 variant for sequence-to-sequence tasks.
+- [**Gemma**](https://huggingface.co/gemma-ai): Lightweight model for cybersecurity reasoning.
 - [**LLaMA 2**](https://huggingface.co/meta-llama/Llama-2-7b-hf): Lightweight model for reasoning and causal tasks.
 - [**LLaMA 3.2**](https://huggingface.co/meta-llama/Llama-3.2-3B): Advanced model for causal and sequence-to-sequence tasks.
-- [**Gemma**](https://huggingface.co/gemma-ai): Lightweight model for cybersecurity reasoning.
+- [**ZySec-AI/SecurityLLM**](https://huggingface.co/ZySec-AI/SecurityLLM): Specialized LLM for security-specific tasks.
+
 
 ---
+
 
 ## **Tests**
 
@@ -41,34 +46,18 @@ The repository includes scripts to visualize the results. Each script generates 
 
 1. **`plot_density_results.py`**  
    - **Description**: Plots the density of correct vs. incorrect predictions for each model.  
-   - **Results**:  
-     - [FastChat Density Plot](results/plots/fastchat_correct_vs_incorrect_density.png)  
-     - [Gemma Density Plot](results/plots/gemma.csv_correct_vs_incorrect_density.png)  
-     - [SecurityLLM Density Plot](results/plots/securityllm.csv_correct_vs_incorrect_density.png)
 
 2. **`plot_heatmap_results.py`**  
    - **Description**: Creates heatmaps to visualize model accuracy across datasets and tasks.  
-   - **Results**:  
-     - [FastChat Accuracy Heatmap](results/plots/fastchat_accuracy_heatmap.png)  
-     - [Gemma Accuracy Heatmap](results/plots/gemma.csv_accuracy_heatmap.png)  
-     - [SecurityLLM Accuracy Heatmap](results/plots/securityllm.csv_accuracy_heatmap.png)
 
 3. **`plot_violin_results.py`**  
    - **Description**: Generates violin plots to illustrate performance distribution across tasks and datasets.  
-   - **Results**:  
-     - [FastChat Violin Plot](results/plots/fastchat_violinplot_by_task_and_dataset.png)  
-     - [Gemma Violin Plot](results/plots/gemma.csv_violinplot_by_task_and_dataset.png)  
-     - [SecurityLLM Violin Plot](results/plots/securityllm.csv_violinplot_by_task_and_dataset.png)
 
 4. **`plot_performance_results.py`**  
    - **Description**: Compares task performance across models using bar plots.  
-   - **Results**:  
-     - [Task Performance Comparison](results/plots/task_performance_comparison_across_models.png)
 
 5. **`plot_sensitivity_results.py`**  
    - **Description**: Visualizes sensitivity analysis of models for datasets/tasks.  
-   - **Results**:  
-     - [Dataset Sensitivity Analysis](results/plots/dataset_sensitivity_analysis.png)
 
 ---
 
