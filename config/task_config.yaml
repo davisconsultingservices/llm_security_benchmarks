@@ -15,11 +15,11 @@ knowledge_understanding:
     expected_column: Correct Answer 
 
 reasoning_and_problem_solving:
-  # rert:
-  #   dataset_path: datasets/SECURE/Dataset/SECURE - RERT.tsv
-  #   input_column: Prompt       
-  #   expected_column: Correct Answer 
-  cpst:
-    dataset_path: datasets/SECURE/Dataset/SECURE - CPST.tsv
-    input_column: Prompt
-    expected_column: Correct Answer
+  rert:
+    dataset_path: datasets/SECURE/Dataset/SECURE - RERT.tsv
+    input_column: Prompt       
+    expected_column: Correct Answer 
+  # cpst:
+  #   dataset_path: datasets/SECURE/Dataset/SECURE - CPST.tsv
+  #   input_column: Prompt
+  #   expected_column: Correct Answer

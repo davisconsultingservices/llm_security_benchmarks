@@ -1,0 +1,229 @@
+Task,Prompt,Expected Output,Model Output,Correct
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.8,CVSS v3 Vector String examples: AV:L,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.6,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,9.8,CVSS v3 scores are typically interpreted as percentages. CVSS,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,10.0,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:P/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.6,CVSS v3 scores are typically interpreted as percentages.,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:L/PR:L/UI:N/S:C/C:N/I:N/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.5,CVSS v3 Vector String examples: AV:L,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.5,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.2,CVSS v3 scores are typically interpreted as percentages. CVSS,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,8.8,CVSS v3 scores are typically interpreted as percentages. CVSS,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.5,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.3,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.5,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.3,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:H/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.4,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:L/PR:H/UI:R/S:C/C:H/I:H/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.7,CVSS v3 Vector String examples: AV:L,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,8.4,CVSS v3 Vector String examples: AV:L,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.5,CVSS v3 Vector String examples: AV:L,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,8.2,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.1,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,9.1,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.5,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.9,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,8.1,CVSS v3 scores are typically interpreted as percentages. CVSS,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.5,CVSS v3 scores are typically interpreted as percentages. CVSS,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,8.2,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:H/UI:N/S:C/C:N/I:N/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.8,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,3.3,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,8.6,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.5,CVSS v3 Vector String examples: AV:L,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.3,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.8,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,2.7,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.1,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.4,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.9,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:L/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.5,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.2,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.3,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,9.6,CVSS v3 scores are typically interpreted as percentages.,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.4,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.3,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,9.1,CVSS v3 Vector String values are examples only and may differ,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.7,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.9,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.1,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.3,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.0,CVSS v3 scores are typically interpreted as percentages. CVSS,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.6,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,8.0,CVSS v3 scores are typically interpreted as percentages. CVSS,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.9,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.4,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,9.3,CVSS v3 Vector String examples: AV:L,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:H/UI:R/S:C/C:N/I:H/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.9,CVSS v3 scores are typically interpreted as percentages. CVSS,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,9.6,CVSS v3 scores are typically interpreted as percentages. CVSS,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,8.2,CVSS v3 Vector String examples: AV:L,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,9.4,CVSS v3 scores are typically interpreted as percentages. CVSS,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.7,CVSS v3 Vector String examples: AV:L,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:L/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.6,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.6,CVSS v3 scores are typically interpreted as percentages.,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.1,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,8.6,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,9.4,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.7,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,9.0,CVSS v3 scores are typically interpreted as percentages. CVSS,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.3,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.5,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.9,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.4,CVSS v3 Vector String examples: AV:N/AC,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:P/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.3,CVSS v3 scores are typically interpreted as percentages.,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.9,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.4,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.9,CVSS v3 scores are typically interpreted as percentages.,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.5,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:A/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.9,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,8.3,CVSS v3 scores are typically interpreted as percentages.,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.7,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,8.8,CVSS v3 scores are typically interpreted as percentages.,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.3,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.5,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.6,CVSS v3 scores are typically interpreted as percentages. CVSS,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:A/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,8.0,CVSS v3 scores are typically interpreted as percentages.,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,9.4,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:L/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.3,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:P/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.3,CVSS v3 scores are typically interpreted as percentages.,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:P/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.1,CVSS v3 scores are typically interpreted as percentages.,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:H/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,9.6,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:L/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,8.2,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:N/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,6.8,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,2.7,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.3,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:H/PR:L/UI:R/S:C/C:L/I:L/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.5,CVSS v3 scores are typically interpreted as percentages. CVSS,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:L/PR:H/UI:R/S:U/C:H/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.2,CVSS v3 Vector String examples: AV:L,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,7.1,CVSS v3 Vector String examples: CVSS-3:,False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.3,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,8.1,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,4.3,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,2.5,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,5.4,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,9.1,"CVSS v3 Vector String examples:
+
+AV",False
+cpst,Calculate the CVSS v3 score for the following CVSS v3 Vector String: AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:L. Return your answer as a single number between 0.0 and 10.0. Provide only the number corresponding to your answer without any additional text or explanations.,2.5,"CVSS v3 Vector String examples:
+
+AV",False
