@@ -80,3 +80,24 @@ plt.close()
 
 print(f"Task performance comparison plot saved: {comparison_path}")
 
+
+# Plot grouped bar chart with a logarithmic scale
+plt.figure(figsize=(12, 8))
+sns.barplot(x='TaskCategory', y='Correct', hue='Model', data=comparison_df)
+plt.title('Task Performance Comparison Across Models')
+plt.ylabel('Mean Accuracy (Log Scale)')
+plt.xlabel('Task Category')
+plt.yscale('log')  # Set y-axis to logarithmic scale
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+# Adjust y-axis ticks for better readability
+plt.yticks([0.01, 0.1, 0.2, 0.5, 1], ['0.01', '0.1', '0.2', '0.5', '1'])
+
+plt.tight_layout()
+
+# Save the plot
+comparison_path_log = os.path.join(output_dir, 'task_performance_comparison_log_scale.png')
+plt.savefig(comparison_path_log)
+plt.close()
+
+print(f"Task performance comparison plot with log scale saved: {comparison_path_log}")

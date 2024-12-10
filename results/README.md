@@ -1,3 +1,8 @@
+# LLM Security Guidance benchmarks
+
+![img_log_scale](plots/task_performance_comparison_log_scale.png)
+
+
 ## **Runtime Environment**
 
 All tests and benchmarks were conducted on **Google Colab**, leveraging an **NVIDIA A100 Tensor Core GPU**. This high-performance setup allows for efficient evaluation of large language models and reduces the time required for processing large datasets. Key environment details:
