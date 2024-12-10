@@ -1,7 +1,5 @@
 # **LLM Security Guidance Benchmarks**
 
-**WORK IN PROGRESS**
-
 This repository is dedicated to benchmarking lightweight, open-source Large Language Models (LLMs) for their effectiveness in providing security guidance. Our work builds upon the [SECURE Benchmark](https://arxiv.org/pdf/2405.20441) to evaluate selected models across predefined cybersecurity tasks using external configuration files for flexibility and scalability.
 
 
