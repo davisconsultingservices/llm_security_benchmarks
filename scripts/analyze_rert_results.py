@@ -50,7 +50,8 @@ for file_path in result_files:
 
     if (file_path == "results/rert_fastchat_t5.csv" or
         file_path == "results/rert_dlite.csv" or
-        file_path == "results/ret_gemma.csv"):
+        file_path == "results/rert_gemma.csv" or 
+        file_path == "results/rert_llama3.csv"):
         continue
 
     # Load the result CSV
