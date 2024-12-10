@@ -16,17 +16,17 @@
 #   type: causal
 #   max_new_tokens: 1024  # Security-focused models often limit generation to 1024 tokens
 
-llama3:
-  tokenizer: meta-llama/Llama-3.2-3B
-  model: meta-llama/Llama-3.2-3B
-  type: causal
-  max_new_tokens: 2048  # Common default for LLaMA models
-
-# llama2:
-#   tokenizer: meta-llama/Llama-2-7b-hf
-#   model: meta-llama/Llama-2-7b-hf
+# llama3:
+#   tokenizer: meta-llama/Llama-3.2-3B
+#   model: meta-llama/Llama-3.2-3B
 #   type: causal
-#   max_new_tokens: 4096  # Assumes a larger max token limit due to model size
+#   max_new_tokens: 2048  # Common default for LLaMA models
+
+llama2:
+  tokenizer: meta-llama/Llama-2-7b-hf
+  model: meta-llama/Llama-2-7b-hf
+  type: causal
+  max_new_tokens: 4096  # Assumes a larger max token limit due to model size
 
 # gemma:
 #   tokenizer: google/gemma-2-2b-it
