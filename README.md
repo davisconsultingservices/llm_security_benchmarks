@@ -26,7 +26,6 @@ This repository is dedicated to benchmarking lightweight, open-source Large Lang
 | **Information Extraction**    | MAET (MITRE ATT&CK Extraction)    | `SECURE - MAET.tsv`       | Extract tactics, techniques, and procedures.       |
 |                               | CWET (Common Weakness Extraction) | `SECURE - CWET.tsv`       | Extract weaknesses from the CWE database.          |
 | **Knowledge Understanding**   | KCV (Knowledge Test)              | `SECURE - KCV.tsv`        | Assess understanding of known vulnerabilities.     |
-|                               | VOOD (Vulnerability Out-of-Distribution) | `SECURE - VOOD.tsv` | Test knowledge on new vulnerabilities.             |
 | **Reasoning and Problem-Solving** | RERT (Risk Evaluation Reasoning)| `SECURE - RERT.tsv`       | Evaluate reasoning about cybersecurity risks.       |
 |                               | CPST (CVSS Problem-Solving)       | `SECURE - CPST.tsv`       | Solve CVSS-related problems.                       |
 
@@ -89,24 +88,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### **4. Configure Models and Tasks**
-- Define models in [model_config.yaml](./config/model_config.yaml):
-  ```yaml
-  fastchat_t5:
-    tokenizer: t5-small
-    model: t5-small
-    type: seq2seq
-  ```
-- Map datasets and columns in [task_config.yaml](./config/task_config.yaml):
-  ```yaml
-  information_extraction:
-    maet:
-      dataset_path: datasets/SECURE/Dataset/SECURE - MAET.tsv
-      input_column: Prompt       
-      expected_column: Correct Answer 
-  ```
-
-### **5. Run Evaluations**
+### **4. Run Evaluations**
 Run the evaluation scripts for each research category:
 ```bash
 python scripts/test_information_extraction.py
@@ -114,7 +96,7 @@ python scripts/test_knowledge_understanding.py
 python scripts/test_reasoning_and_problem_solving.py
 ```
 
-### **6. View Results**
+### **5. View Results**
 Results are saved in the `results/` directory as task-specific CSV files:
 ```bash
 results/

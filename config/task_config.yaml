@@ -13,10 +13,6 @@ knowledge_understanding:
     dataset_path: datasets/SECURE/Dataset/SECURE - KCV.tsv
     input_column: Prompt       
     expected_column: Correct Answer 
-  vood:
-    dataset_path: datasets/SECURE/Dataset/SECURE - VOOD.tsv
-    input_column: Prompt       
-    expected_column: Correct Answer 
 
 reasoning_and_problem_solving:
   rert:
